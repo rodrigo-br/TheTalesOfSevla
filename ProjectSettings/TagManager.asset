@@ -9,6 +9,9 @@ TagManager:
   - Jumper
   - Collectable
   - Platform
+  - ItemBuff
+  - Arrow
+  - BOSS
   layers:
   - Default
   - TransparentFX
@@ -25,7 +28,7 @@ TagManager:
   - Hazards
   - Arrows
   - Interactables
-  - 
+  - ItemBuffer
   - 
   - 
   - 
@@ -63,6 +66,9 @@ TagManager:
     locked: 0
   - name: Interactables
     uniqueID: 261484063
+    locked: 0
+  - name: ItemBuffer
+    uniqueID: 2465578371
     locked: 0
   - name: Enemies
     uniqueID: 2908724721

@@ -12,7 +12,7 @@ public class PickUpItens : MonoBehaviour
         {
             wasCollected = true;
             FindObjectOfType<GameSession>().CollectPaper();
-            AudioSource.PlayClipAtPoint(toiletPaperClip, Camera.main.transform.position, 0.5f);
+            AudioSource.PlayClipAtPoint(toiletPaperClip, Camera.main.transform.position, 0.4f);
             Destroy(gameObject);
         }
     }

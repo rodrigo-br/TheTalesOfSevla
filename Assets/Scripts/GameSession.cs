@@ -8,8 +8,8 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
     int paperCount;
-    [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI paperCountText;
+    [SerializeField] TextMeshProUGUI arrowsCountText;
     //Singleton pattern
     void Awake() 
     {
@@ -27,7 +27,6 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        livesText.text = playerLives.ToString();
         ResetPaperCount();
     }
 
@@ -42,6 +41,7 @@ public class GameSession : MonoBehaviour
         ResetPaperCount();
         if (playerLives > 1)
         {
+            FindObjectOfType<LivesImageManager>().DestroyImage(playerLives - 1);
             TakeLife();
         }
         else
@@ -67,6 +67,5 @@ public class GameSession : MonoBehaviour
     {
         playerLives--;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        livesText.text = playerLives.ToString();
     }
 }

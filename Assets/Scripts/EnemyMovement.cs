@@ -25,9 +25,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.tag == "Platform")
         {
-            moveSpeed = -moveSpeed;
+            TurnMovementAround();
             FlipEnemyFacing();
         }
+    }
+
+    public void TurnMovementAround()
+    {
+        moveSpeed = -moveSpeed;
+        FlipEnemyFacing();
     }
 
     void FlipEnemyFacing()

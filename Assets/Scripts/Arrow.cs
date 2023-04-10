@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     bool hasHitEnemy;
     [SerializeField] AudioClip pewPewClip;
     [SerializeField] AudioClip explosionClip;
+
     void Awake()
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
@@ -16,7 +17,7 @@ public class Arrow : MonoBehaviour
 
     void Start()
     {
-        AudioSource.PlayClipAtPoint(pewPewClip, gameObject.transform.position);
+        AudioSource.PlayClipAtPoint(pewPewClip, Camera.main.transform.position, 0.7f);
     }
 
     void Update()
@@ -48,8 +49,12 @@ public class Arrow : MonoBehaviour
     {
         if (other.tag == "Enemy" && (myRigidBody2D.velocity != Vector2.zero || hasHitEnemy))
         {
-            AudioSource.PlayClipAtPoint(explosionClip, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(explosionClip, Camera.main.transform.position, 0.3f);
             other.GetComponent<Animator>().SetTrigger("BeaDie");
+            hasHitEnemy = false;
+        }
+        else if (other.tag == "BOSS" && (myRigidBody2D.velocity != Vector2.zero || hasHitEnemy))
+        {
             hasHitEnemy = false;
         }
         Destroy(gameObject, 0.5f);

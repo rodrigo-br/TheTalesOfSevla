@@ -21,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
     float defaultGravity;
     bool isAlive;
     bool isShooting;
+    bool isBossWave = false;
 
+    [SerializeField] int numberOfArrows = 15;
     void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -59,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isAlive)
         {
-            if (value.isPressed && IsFeetTouching("Ground"))
+            if (value.isPressed && IsFeetTouching("Ground", "Enemy"))
             {
                 myRigidBody.velocity += new Vector2(0f, jumpSpeed);
             }
@@ -140,6 +142,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Shoot()
     {
+        if (isBossWave)
+        {
+            if (numberOfArrows > 0)
+            {
+                numberOfArrows--;
+            }
+            else
+            {
+                return ;
+            }
+        }
         isShooting = true;
         transform.localScale = new Vector2(Mathf.Sign(bow.transform.right.x), transform.localScale.y);
         myAnimator.SetTrigger("Shooting");
@@ -154,5 +167,20 @@ public class PlayerMovement : MonoBehaviour
             AudioSource.PlayClipAtPoint(boing, Camera.main.transform.position);
             other.GetComponent<Animator>().SetTrigger("Bounce");
         }
+    }
+
+    public void PickArrows()
+    {
+        numberOfArrows += 10;
+    }
+
+    public int GetNumberOfArrows()
+    {
+        return numberOfArrows;
+    }
+
+    public void SetBossWave()
+    {
+        isBossWave = true;
     }
 }

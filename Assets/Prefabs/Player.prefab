@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3603747718168399606}
   - component: {fileID: 1917659190}
-  - component: {fileID: 4608021659733138343}
-  - component: {fileID: 2597711135112786327}
   m_Layer: 8
   m_Name: Bow
   m_TagString: Untagged
@@ -35,36 +33,6 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1917659190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300218693008769473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0263fb7ab2f6e40bda42ae310a8e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrow: {fileID: 5554242565448488673, guid: a1954965a7e73d44d9047bd8d23c8ed3, type: 3}
-  arrowSpeed: 20
-  shotPoint: {fileID: 3603747718168399606}
---- !u!114 &4608021659733138343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300218693008769473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0263fb7ab2f6e40bda42ae310a8e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrow: {fileID: 5554242565448488673, guid: a1954965a7e73d44d9047bd8d23c8ed3, type: 3}
-  arrowSpeed: 20
-  shotPoint: {fileID: 3603747718168399606}
---- !u!114 &2597711135112786327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +241,7 @@ MonoBehaviour:
   speedOfMovement: 4
   jumpSpeed: 12
   climbSpeed: 3
-  bow: {fileID: 2597711135112786327}
+  bow: {fileID: 0}
   boing: {fileID: 8300000, guid: 4029175361ea60442b159b4e313f4947, type: 3}
   ouch: {fileID: 8300000, guid: c3065a519c70a0948946b534a87901fa, type: 3}
 --- !u!61 &4959129128597714127
