@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        if (IsBodyTouching("Enemy", "Hazards"))
+        if (IsBodyTouching("Enemy", "Hazards") || (transform.position.y < -5 && SceneManager.GetActiveScene().buildIndex == 2))
         {
             isAlive = false;
             AudioSource.PlayClipAtPoint(ouch, Camera.main.transform.position);
@@ -194,14 +194,6 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(boing, Camera.main.transform.position);
             other.GetComponent<Animator>().SetTrigger("Bounce");
-        }
-        if (other.tag == "Enemy" && isAlive)
-        {
-            isAlive = false;
-            AudioSource.PlayClipAtPoint(ouch, Camera.main.transform.position);
-            myAnimator.SetTrigger("Dying");
-            myRigidBody.velocity = new Vector2(0f, jumpSpeed);
-            FindObjectOfType<GameSession>().Invoke("ProcessPlayerDeath", 1f);
         }
     }
 
