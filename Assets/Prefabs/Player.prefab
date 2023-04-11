@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 1409625962}
   - component: {fileID: 7531033688166826413}
   - component: {fileID: 4959129128597714127}
+  - component: {fileID: 8066971105388891637}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -146,7 +147,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -156515585
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 5
   m_Sprite: {fileID: -1272727252, guid: 17a6bed2d8bd20340a0af0a9ba8ad0f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -241,9 +242,10 @@ MonoBehaviour:
   speedOfMovement: 4
   jumpSpeed: 12
   climbSpeed: 3
-  bow: {fileID: 0}
+  bow: {fileID: 1917659190}
   boing: {fileID: 8300000, guid: 4029175361ea60442b159b4e313f4947, type: 3}
   ouch: {fileID: 8300000, guid: c3065a519c70a0948946b534a87901fa, type: 3}
+  numberOfArrows: 15
 --- !u!61 &4959129128597714127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,3 +272,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.42226982, y: 0.056471705}
   m_EdgeRadius: 0
+--- !u!60 &8066971105388891637
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066971104516678295}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.35863018, y: -0.7018261}
+      - {x: -0.33663464, y: -1.0597878}
+      - {x: -0.26816082, y: -1.059788}
+      - {x: -0.30015755, y: -0.67460823}

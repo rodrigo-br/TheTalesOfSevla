@@ -154,3 +154,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pewPewClip: {fileID: 8300000, guid: 419e641fd27c69249ab66c868832b06f, type: 3}
   explosionClip: {fileID: 8300000, guid: 31b138a03f9f35644a8c6ebf0184b5f2, type: 3}
+  bleed: {fileID: 910854406301450120, guid: 089346d8d1bd3cf42925f6e07a95275b, type: 3}

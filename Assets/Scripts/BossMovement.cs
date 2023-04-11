@@ -145,6 +145,7 @@ public class BossMovement : MonoBehaviour
 
     void CheckStage()
     {
+        FindAnyObjectByType<PlayerMovement>().ShakeCamera();
         if (stage == 0)
         {
             healthBar.healthSystem.SetMaxHP(20);

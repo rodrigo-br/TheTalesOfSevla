@@ -7,7 +7,26 @@ public class PlayAgainButton : MonoBehaviour
 {
     public void PlayAgain()
     {
-        Destroy(FindObjectOfType<GameSession>().gameObject);
+        GameSession gameSession = FindObjectOfType<GameSession>();
+        if (gameSession != null)
+        {
+            Destroy(gameSession.gameObject);
+        }
         SceneManager.LoadScene(0);
+    }
+
+    public void PlayLevel2()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void PlayLevel3()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void PlayBossLevel()
+    {
+        SceneManager.LoadScene(3);
     }
 }

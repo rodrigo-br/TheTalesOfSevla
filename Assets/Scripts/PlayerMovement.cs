@@ -18,11 +18,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip ouch;
     CapsuleCollider2D myBodyCollider2D;
     BoxCollider2D myFeetCollider2D;
+    PolygonCollider2D myPolygonCollider2D;
     float defaultGravity;
     bool isAlive;
     bool isShooting;
     bool isBossFight = false;
     [SerializeField] int numberOfArrows = 15;
+    bool isOnEdge = false;
 
     void Awake()
     {
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider2D = GetComponent<CapsuleCollider2D>();
         myFeetCollider2D = GetComponent<BoxCollider2D>();
+        myPolygonCollider2D = GetComponent<PolygonCollider2D>();
     }
     void Start()
     {
@@ -87,7 +90,25 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 playerVelocity = new Vector2(moveInput.x * speedOfMovement, myRigidBody.velocity.y);
             myRigidBody.velocity = playerVelocity;
-            myAnimator.SetBool("isRunning", IsMovingHorizontal());
+            CheckEdge();
+            if (!isOnEdge)
+            {
+                myAnimator.SetBool("isRunning", IsMovingHorizontal());
+            }
+        }
+    }
+
+    void CheckEdge()
+    {
+        if (IsFeetTouching("Ground") && !myPolygonCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            isOnEdge = true;
+            myAnimator.SetBool("isOnEdge", true);
+        }
+        else
+        {
+            isOnEdge = false;
+            myAnimator.SetBool("isOnEdge", false);
         }
     }
 
@@ -154,10 +175,10 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector2(Mathf.Sign(bow.transform.right.x), transform.localScale.y);
         myAnimator.SetTrigger("Shooting");
         bow.Invoke("Shoot", 0.2f);
-        numberOfArrows--;
         Invoke("FalseShooting", 0.2f);
         if (isBossFight)
         {
+            numberOfArrows--;
             FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
         }
     }
@@ -174,6 +195,14 @@ public class PlayerMovement : MonoBehaviour
             AudioSource.PlayClipAtPoint(boing, Camera.main.transform.position);
             other.GetComponent<Animator>().SetTrigger("Bounce");
         }
+        if (other.tag == "Enemy" && isAlive)
+        {
+            isAlive = false;
+            AudioSource.PlayClipAtPoint(ouch, Camera.main.transform.position);
+            myAnimator.SetTrigger("Dying");
+            myRigidBody.velocity = new Vector2(0f, jumpSpeed);
+            FindObjectOfType<GameSession>().Invoke("ProcessPlayerDeath", 1f);
+        }
     }
 
     public void RestoreArrows(int value)
@@ -183,5 +212,10 @@ public class PlayerMovement : MonoBehaviour
             numberOfArrows += value;
             FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
         }
+    }
+
+    public void ShakeCamera()
+    {
+        myAnimator.SetTrigger("Shake");
     }
 }

@@ -34,7 +34,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f96a7be947c3948b5bcdf49634ce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionClip: {fileID: 8300000, guid: 31b138a03f9f35644a8c6ebf0184b5f2, type: 3}
 --- !u!1102 &-3788855271038294287
 AnimatorState:
   serializedVersion: 6
@@ -76,7 +75,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

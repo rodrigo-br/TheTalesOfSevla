@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c32c6a501b4d59b4199a11fe8097e838
+guid: d0e04fa2273cb5c47879c1f52a12af42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_0
+      name: BloodSpawm-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16fd351a3571e0045a73ae3fd94e19d1
-      internalID: 1662217402
+      spriteID: 349214c8556084c44bc61958923b3ade
+      internalID: 1820228495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_1
+      name: BloodSpawm-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3176c53dc9f20444bbe6f3640a9622b4
-      internalID: -1204132764
+      spriteID: 60155aa6444f97c48bb895cd9bdf9735
+      internalID: -1599955381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_2
+      name: BloodSpawm-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f4f006eef6338a42b64dd614d173db4
-      internalID: -1218058422
+      spriteID: 6c06ac174709d4441b6882d101924ad4
+      internalID: -1151800265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_3
+      name: BloodSpawm-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5afc8ef63ecab3545bc1c9709d3544e1
-      internalID: -1265318982
+      spriteID: b687f7898c1662b4c971df240356b7f2
+      internalID: -990888949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_4
+      name: BloodSpawm-Sheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7311865dc76ed4a42837d5bdc39f1044
-      internalID: -834281335
+      spriteID: dea8d950dee6532468e79e982b28cbb3
+      internalID: -1784155944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_5
+      name: BloodSpawm-Sheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -236,29 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7671b2c9d6f80fa4aa8d0f7dc4da353e
-      internalID: 600251048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SevlaFallingEdge-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f62ee95f5a5ea444889f157a87e9cbc3
-      internalID: -1684737546
+      spriteID: ca723cae8be3c27468f596f1df95ec88
+      internalID: 853409783
       vertices: []
       indices: 
       edges: []
@@ -274,13 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SevlaFallingEdge-Sheet_0: 1662217402
-      SevlaFallingEdge-Sheet_1: -1204132764
-      SevlaFallingEdge-Sheet_2: -1218058422
-      SevlaFallingEdge-Sheet_3: -1265318982
-      SevlaFallingEdge-Sheet_4: -834281335
-      SevlaFallingEdge-Sheet_5: 600251048
-      SevlaFallingEdge-Sheet_6: -1684737546
+      BloodSpawm-Sheet_0: 1820228495
+      BloodSpawm-Sheet_1: -1599955381
+      BloodSpawm-Sheet_2: -1151800265
+      BloodSpawm-Sheet_3: -990888949
+      BloodSpawm-Sheet_4: -1784155944
+      BloodSpawm-Sheet_5: 853409783
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

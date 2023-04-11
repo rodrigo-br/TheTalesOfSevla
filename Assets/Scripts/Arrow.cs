@@ -9,6 +9,8 @@ public class Arrow : MonoBehaviour
     bool hasHitEnemy;
     [SerializeField] AudioClip pewPewClip;
     [SerializeField] AudioClip explosionClip;
+    [SerializeField] GameObject bleed;
+    bool isBleeding = false;
 
     void Awake()
     {
@@ -55,6 +57,11 @@ public class Arrow : MonoBehaviour
         }
         else if (other.tag == "BOSS" && (myRigidBody2D.velocity != Vector2.zero || hasHitEnemy))
         {
+            if (!isBleeding)
+            {
+                isBleeding = true;
+                Instantiate(bleed, transform.position + new Vector3(transform.position.x > 0 ? 0.5f : -0.5f, 0f, 0f), Quaternion.identity);
+            }
             hasHitEnemy = false;
         }
         Destroy(gameObject, 0.5f);
