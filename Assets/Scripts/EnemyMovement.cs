@@ -11,10 +11,6 @@ public class EnemyMovement : MonoBehaviour
     {
         myRigidBody2D = gameObject.GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

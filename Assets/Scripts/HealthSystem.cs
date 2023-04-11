@@ -24,6 +24,11 @@ public class HealthSystem
         return (float)healthPoints / healthMax;
     }
 
+    public void SetMaxHP(int newHealthMax)
+    {
+        healthMax = newHealthMax;
+    }
+
     public void Damage(int damageAmount)
     {
         healthPoints -= damageAmount;

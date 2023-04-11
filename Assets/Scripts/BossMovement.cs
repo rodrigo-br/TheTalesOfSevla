@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [Range(0.1f, 1f)][SerializeField] float movSpeed = 3f;
+    [Range(0.1f, 10f)][SerializeField] float movSpeed = 3f;
     [SerializeField] float attackRange = 2.5f;
     Rigidbody2D bossRigidBody;
     Animator bossAnimator;
@@ -17,10 +17,13 @@ public class BossMovement : MonoBehaviour
     [SerializeField] float dashCooldown = 2f;
     [SerializeField] BuffItem itemBuffer;
     [SerializeField] EnemyMovement enemy;
+    [SerializeField] LevelExit exit;
     bool canFlip = true;
     bool canTakeDamage = false;
     HealthBar healthBar;
     Transform child;
+    int stage = 0;
+    [SerializeField] int lifes = 10;
     void Awake()
     {
         bossAnimator = GetComponent<Animator>();
@@ -32,10 +35,16 @@ public class BossMovement : MonoBehaviour
     void Start()
     {
         defaultMovSpeed = movSpeed;
-        healthBar.Setup(new HealthSystem(10));
+        healthBar.Setup(new HealthSystem(lifes));
+        InvokeRepeating("GenerateItemBuff", 5f, 8f);
     }
 
-    void Update()
+    void GenerateItemBuff()
+    {
+        Instantiate(itemBuffer, transform.position, transform.rotation);
+    }
+
+    void FixedUpdate()
     {
         if (canFlip)
         {
@@ -103,15 +112,21 @@ public class BossMovement : MonoBehaviour
         float flipDirection = isFlipped ? transform.localScale.x : -transform.localScale.x;
         canDash = false;
         canTakeDamage = true;
-        Instantiate(itemBuffer, transform.position, transform.rotation);
-        Instantiate(enemy, transform.position - new Vector3(1f, 1.7f, 0f), Quaternion.identity).TurnMovementAround();
-        Instantiate(enemy, transform.position - new Vector3(-1f, 1.7f, 0f), Quaternion.identity);
+        if (stage >= 1)
+        {
+            Instantiate(itemBuffer, transform.position, transform.rotation);
+        }
+        if (stage >= 2)
+        {
+            Instantiate(enemy, transform.position - new Vector3(1f, 1.7f, 0f), Quaternion.identity).TurnMovementAround();
+            Instantiate(enemy, transform.position - new Vector3(-1f, 1.7f, 0f), Quaternion.identity);
+        }
         bossRigidBody.velocity = new Vector2(flipDirection * dashPower, 0f);
         yield return new WaitForSecondsRealtime(dashTime);
         yield return new WaitForSecondsRealtime(dashCooldown);
         bossAnimator.SetBool("IsChasing", true);
-        canDash = true;
         canFlip = true;
+        canDash = true;
         canTakeDamage = false;
     }
 
@@ -123,14 +138,46 @@ public class BossMovement : MonoBehaviour
             healthBar.UpdateBar();
             if (healthBar.healthSystem.GetHealthPoints() <= 0)
             {
-                DramaticDeath();
+                CheckStage();
             }
         }
     }
 
+    void CheckStage()
+    {
+        if (stage == 0)
+        {
+            healthBar.healthSystem.SetMaxHP(20);
+            healthBar.healthSystem.Heal(20);
+            CancelInvoke("GenerateItemBuff");
+            movSpeed += 1f;
+            defaultMovSpeed += 1f;
+            attackRange += 0.3f;
+            dashCooldown -= 0.2f;
+            stage++;
+            gameObject.GetComponent<SpriteRenderer>().color -= new Color(0.1f, 0.3f, 0.3f, 0.0f);
+        }
+        else if (stage == 1)
+        {
+            healthBar.healthSystem.SetMaxHP(30);
+            healthBar.healthSystem.Heal(30);
+            movSpeed += 0.5f;
+            defaultMovSpeed += 0.5f;
+            attackRange += 0.2f;
+            dashCooldown -= 0.1f;
+            stage++;
+            gameObject.GetComponent<SpriteRenderer>().color -= new Color(0.1f, 0.3f, 0.3f, 0.0f);
+        }
+        else
+        {
+            DramaticDeath();
+        }
+        healthBar.UpdateBar();
+    }
+
     void DramaticDeath()
     {
-        Debug.Log("Morreu");
+        Instantiate(exit, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuffItem : MonoBehaviour
 {
     [SerializeField] GameObject particles;
+    [SerializeField] int restoreValue = 10;
     void Start()
     {
         GetComponent<Rigidbody2D>().velocity += new Vector2(Random.Range(-5, 5), Random.Range(2, 5));
@@ -14,7 +15,7 @@ public class BuffItem : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerMovement>().PickArrows();
+            other.gameObject.GetComponent<PlayerMovement>().RestoreArrows(restoreValue);
             Instantiate(particles, transform.position, transform.rotation);
             Destroy(gameObject);
         }

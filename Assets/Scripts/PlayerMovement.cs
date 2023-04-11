@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     float defaultGravity;
     bool isAlive;
     bool isShooting;
-    bool isBossWave = false;
-
+    bool isBossFight = false;
     [SerializeField] int numberOfArrows = 15;
+
     void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -36,11 +36,16 @@ public class PlayerMovement : MonoBehaviour
         defaultGravity = myRigidBody.gravityScale;
         isAlive = true;
         isShooting = false;
+        FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
+        if (SceneManager.GetActiveScene().name == "Boss")
+        {
+            isBossFight = true;
+        }
     }
 
     void Update()
     {
-        if (isAlive)
+        if (isAlive && !isShooting)
         {
             Run();
             FlipSprite();
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnFire(InputValue value)
     {
-        if (isAlive)
+        if (isAlive && numberOfArrows > 0)
         {
             Shoot();
         }
@@ -78,10 +83,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Run()
     {
-        Vector2 playerVelocity = new Vector2(moveInput.x * speedOfMovement, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
-
-        myAnimator.SetBool("isRunning", IsMovingHorizontal());
+        if (!isShooting)
+        {
+            Vector2 playerVelocity = new Vector2(moveInput.x * speedOfMovement, myRigidBody.velocity.y);
+            myRigidBody.velocity = playerVelocity;
+            myAnimator.SetBool("isRunning", IsMovingHorizontal());
+        }
     }
 
     void ClimbLadder()
@@ -142,21 +149,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Shoot()
     {
-        if (isBossWave)
-        {
-            if (numberOfArrows > 0)
-            {
-                numberOfArrows--;
-            }
-            else
-            {
-                return ;
-            }
-        }
         isShooting = true;
+        myRigidBody.velocity = new Vector2(0f, myRigidBody.velocity.y);
         transform.localScale = new Vector2(Mathf.Sign(bow.transform.right.x), transform.localScale.y);
         myAnimator.SetTrigger("Shooting");
         bow.Invoke("Shoot", 0.2f);
+        numberOfArrows--;
+        Invoke("FalseShooting", 0.2f);
+        if (isBossFight)
+        {
+            FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
+        }
+    }
+
+    void FalseShooting()
+    {
         isShooting = false;
     }
 
@@ -169,18 +176,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void PickArrows()
+    public void RestoreArrows(int value)
     {
-        numberOfArrows += 10;
-    }
-
-    public int GetNumberOfArrows()
-    {
-        return numberOfArrows;
-    }
-
-    public void SetBossWave()
-    {
-        isBossWave = true;
+        if (isBossFight)
+        {
+            numberOfArrows += value;
+            FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
+        }
     }
 }
