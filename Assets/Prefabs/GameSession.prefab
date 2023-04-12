@@ -338,7 +338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a27d2aa5162106468f6979e4319f0b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afaa999c6b239fd4c9040f85ab5b1488, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 480}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf9af1bf37753714fbf2e46cac40093e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a561b1a02a8d054494bd3c3bc938ada, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 235d2b8c6b4061641b9639a7c1d1759b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a28da25ffe0ccf42b3760a1072e97d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 235d2b8c6b4061641b9639a7c1d1759b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a28da25ffe0ccf42b3760a1072e97d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 235d2b8c6b4061641b9639a7c1d1759b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a28da25ffe0ccf42b3760a1072e97d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Porcosa
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1570991025, guid: 9ad13247b40d6cb4788593d658a0f5b4, type: 3}
-  - {fileID: -848364615, guid: 9ad13247b40d6cb4788593d658a0f5b4, type: 3}
-  - {fileID: -695541788, guid: 9ad13247b40d6cb4788593d658a0f5b4, type: 3}
-  - {fileID: -1041110321, guid: 9ad13247b40d6cb4788593d658a0f5b4, type: 3}
+  - {fileID: -1288316900, guid: fb14e0b4dbfe718438f0bf63c62583d6, type: 3}
+  - {fileID: -640261064, guid: fb14e0b4dbfe718438f0bf63c62583d6, type: 3}
+  - {fileID: -292782779, guid: fb14e0b4dbfe718438f0bf63c62583d6, type: 3}
+  - {fileID: -2062659708, guid: fb14e0b4dbfe718438f0bf63c62583d6, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 5
   m_AnimationStartTime: 0

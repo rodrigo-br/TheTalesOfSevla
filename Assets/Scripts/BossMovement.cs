@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossMovement : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class BossMovement : MonoBehaviour
     Transform child;
     int stage = 0;
     [SerializeField] int lifes = 10;
+    bool isEasyMode = false;
     void Awake()
     {
         bossAnimator = GetComponent<Animator>();
@@ -34,6 +36,16 @@ public class BossMovement : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Boss Easy")
+        {
+            isEasyMode = true;
+        }
+        if (isEasyMode)
+        {
+            movSpeed -= 0.5f;
+            dashCooldown += 0.5f;
+            lifes -= 5;
+        }
         defaultMovSpeed = movSpeed;
         healthBar.Setup(new HealthSystem(lifes));
         InvokeRepeating("GenerateItemBuff", 5f, 8f);
@@ -148,8 +160,8 @@ public class BossMovement : MonoBehaviour
         FindAnyObjectByType<PlayerMovement>().ShakeCamera();
         if (stage == 0)
         {
-            healthBar.healthSystem.SetMaxHP(20);
-            healthBar.healthSystem.Heal(20);
+            healthBar.healthSystem.SetMaxHP(lifes * 2);
+            healthBar.healthSystem.Heal(lifes * 2);
             CancelInvoke("GenerateItemBuff");
             movSpeed += 1f;
             defaultMovSpeed += 1f;
@@ -160,8 +172,8 @@ public class BossMovement : MonoBehaviour
         }
         else if (stage == 1)
         {
-            healthBar.healthSystem.SetMaxHP(30);
-            healthBar.healthSystem.Heal(30);
+            healthBar.healthSystem.SetMaxHP(lifes * 3);
+            healthBar.healthSystem.Heal(lifes * 3);
             movSpeed += 0.5f;
             defaultMovSpeed += 0.5f;
             attackRange += 0.2f;

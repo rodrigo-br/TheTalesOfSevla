@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         isAlive = true;
         isShooting = false;
         FindObjectOfType<GameSession>().UpdateArrowText(numberOfArrows);
-        if (SceneManager.GetActiveScene().name == "Boss")
+        if (SceneManager.GetActiveScene().name.Contains("Boss"))
         {
             isBossFight = true;
         }

@@ -33,7 +33,7 @@ public class GameSession : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isBoss && SceneManager.GetActiveScene().name == "Boss")
+        if (!isBoss && SceneManager.GetActiveScene().name.Contains("Boss"))
         {
             isBoss = true;
             transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(false);
